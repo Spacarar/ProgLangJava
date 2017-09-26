@@ -9,13 +9,15 @@ package proglangjava;
  *
  * @author Wolfwood
  */
-public class ProgLangJava {
+public class App {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
+    public static void main(String[] args) throws Exception{
+        App app = new App();
+        app.run();
+    }
+    
+    void run() throws Exception{
+        
     }
     
 }
