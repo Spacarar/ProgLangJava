@@ -161,23 +161,28 @@ public class App {
 
     void reset() {
         sql("drop table if exists person");
-        sql("create table person (id integer primary key, name string)");
+        sql("create table person (id integer primary key, name string, test1 integer, test2 integer, average long)");
     }
 
-    long insertPerson(String name) {
-        return longResult(sql("insert into person (name) values (?)", name));
+    long insertPerson(String name, Integer test1, Integer test2) {
+        long average =(test1+test2)/2;
+        return longResult(sql("insert into person (name,test1,test2,average) values (?,?,?,?)", name, test1,test2,average));
     }
 
     String getPerson(long id) {
         return stringResult(sql("select name from person where id=?", id));
     }
+    long getAverage(long id){
+        return longResult(sql("select average from person where id=?",id));
+    }
 
     void run() {
         reset();
-        long aliceId = insertPerson("alice");
+        long aliceId = insertPerson("alice",89,100);
         System.out.println("aliceId=" + aliceId);
-        long bobId = insertPerson("bob");
-        System.out.println("alice name=" + getPerson(aliceId));
+        long bobId = insertPerson("bob",64,86);
+        System.out.println("alice name=" + getPerson(aliceId)+" alice average="+getAverage(aliceId));
+        System.out.println("bob name="+getPerson(bobId)+" bob average"+ getAverage(bobId));
     }
 
 }
