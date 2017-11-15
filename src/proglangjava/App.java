@@ -18,7 +18,7 @@ public class App {
         app.run();
     }
    Job[] createJobList(){
-       int numJobs = 10;
+       int numJobs = 50 ;
         String[] actions ={"Sweeping","Mopping","Doing the dishes","Taking the trash out","Cleaning the windows","Organizing the boxes","taking a break"};
         Random r= new Random();
         Job[] joblist=new Job[numJobs];
